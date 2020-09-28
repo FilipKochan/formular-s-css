@@ -98,7 +98,8 @@
     ?>
     <div class="container">
         <form action="index.php" method="get">
-            <label for="jmeno">Jmeno:</label><br>
+            <label for="jmeno">Jmeno: </label>
+
             <input <?php zvyraznenichyby($inputjmeno) ?> type="text" id="jmeno" name="jmeno"
                 <?php if (isset($_REQUEST["jmeno"])) echo 'value="' . $_REQUEST["jmeno"] . '"' ?>> <br>
 
@@ -106,12 +107,17 @@
             <input <?php zvyraznenichyby($inputemail) ?> type="email" id="email" name="email"
                 <?php if (isset($_REQUEST["email"])) echo 'value="' . $_REQUEST["email"] . '"' ?>> <br>
 
-            <label for="zprava">Zprava:</label><br>
+            <label for="zprava">Zprava: <small>(nepovinne)</small></label><br>
             <textarea id="zprava"
                 name="zprava"><?php if (isset($_REQUEST["zprava"]) && strlen($_REQUEST["zprava"]) > 0) echo $_REQUEST["zprava"] ?></textarea><br>
 
-            <fieldset>
-                <legend>Vyberte sve pohlavi</legend>
+            <fieldset style="border-radius: 4px" <?php if (isset($_REQUEST["pohlavi"]))
+                                                        print("class=\"spravne\"");
+                                                    elseif (isset($_REQUEST["ODESLAT"])) print("class=\"chybne\"") ?>>
+                <legend>Vyberte sve pohlavi
+                    <?php //if (!isset($_REQUEST["pohlavi"])) print("<p class=\"chybovahlaska\">Pole je povinne!</p>") 
+                    ?>
+                </legend>
                 <input type="radio" id="muz" name="pohlavi" value="muz"
                     <?php if (isset($_REQUEST["pohlavi"]) && $_REQUEST["pohlavi"] == "muz") echo 'checked' ?>>
                 <label for="muz">Muz</label><br>
@@ -135,7 +141,9 @@
                 <?php if (isset($_REQUEST["kontrola"]) && is_numeric($_REQUEST["kontrola"]) && $_REQUEST["kontrola"] == $a + $b) echo 'value="' . $_REQUEST["kontrola"] . '"' ?>><br>
             <input type="checkbox" id="newsletter" name="newsletter" value="ano"
                 <?php if (isset($_REQUEST["newsletter"])) echo 'checked="checked"' ?>>
-            <label for="newsletter">Mam zajem o zasilani newsletteru.</label><br>
+
+
+            <label for="newsletter">Mam zajem o newsletter. <small>(nepovinne)</small></label><br>
             <input type="submit" name="ODESLAT" value="ODESLAT">
         </form>
     </div>
