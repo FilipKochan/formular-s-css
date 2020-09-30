@@ -62,10 +62,6 @@ legend {
 	padding: 0;
 }
 
-input[type=checkbox]{
-	margin-bottom: 15px;
-}
-
 input[type=submit] {
 	width: 100%;
 	padding: 5px 20px;
@@ -96,25 +92,28 @@ input:focus{
 
 }
 
-.chybovahlaska p{
-	color: red;
-}
-
-
-
 fieldset{
 	border: none;
 }
 
-@media only screen and (max-width: 500px){
-	.container {
-		width: 75%;
-	}
+small.chybne {
+	color: red;
+	border: none;
+	border-radius: 5px;
+	background-color: rgb(227, 244, 252);
+	padding: 1px;
 }
 
+small.spravne{
+	color: green;
+	border: none;
+	border-radius: 5px;
+	background-color: rgb(227, 244, 252);
+	padding: 1px;
+}
 
-
-
-
-
-
+@media only screen and (max-width: 500px){
+	.container {
+		width: 80%;
+	}
+}
